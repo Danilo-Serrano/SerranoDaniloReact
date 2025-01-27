@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.logo{
+    width: 126px;
+    height: 80px;
+}
+.NavBarBackground{
+    width: 100%;
+    height: 120px;
+    background-color: #506ee5;
+    background-size: cover;
+    display: flex;
+}
+.Ul-Input{
+    background-color: #506ee5;
+    border: 2px solid white;
+    padding: 0px 2px;
+    font-size: 20px;
+}
+.Auto-Container{
+    width: 1250px;
+    display: flex;
+    margin: auto;
+}
+.Auto-Container2{
+    width: 1100px;
+    display: flex;
+    margin: auto;
+}
+.NavBar-Left{
+    margin-left: 40px;
+    display: flex;
+    align-items: center;
+}
+h1{
+    font-size: 45px;
+    margin-left: 10px;
+    color: rgb(250, 250, 249);
+}
+.NavBar-Right{
+    color: rgb(167, 167, 167);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: end;
+}
+.NavBar-Ul{
+    display: flex;
+}
+nav ul li{
+    list-style: none;
+    margin-right: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+.carrito-img{
+    width: 80px;
+}
+.ContainerCategories{
+    display: flex;
+    background-color: #68b2f8;
+    width: 100%;
+    height: 45px;
+}
+.Categories{
+    display: flex;
+    list-style: none;
+}
+div ul li{
+    margin-left: 15px;
+    cursor: pointer;
+}
+.Categories-h4{
+    color: rgb(225, 222, 222);
+    font-size: 20px;
+}
+.Categories-li{
+    font-size: 20px;
+    color: rgb(213, 213, 213);
+}
+
