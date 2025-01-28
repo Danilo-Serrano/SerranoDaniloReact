@@ -35,10 +35,11 @@
     display: flex;
     align-items: center;
 }
-h1{
+.tittle{
     font-size: 45px;
     margin-left: 10px;
     color: rgb(250, 250, 249);
+    text-decoration: none;
 }
 .NavBar-Right{
     color: rgb(167, 167, 167);
@@ -82,5 +83,6 @@ div ul li{
 .Categories-li{
     font-size: 20px;
     color: rgb(213, 213, 213);
+    text-decoration: none;
 }
 

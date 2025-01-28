@@ -1,10 +1,10 @@
 import React from 'react'
 
 
-const ItemListContainer = (props) => {
+const ItemListContainer = () => {
 return (
     <div>
-        <h2>Buen día {props.nombre}</h2>
+
     </div>
 )
 }
