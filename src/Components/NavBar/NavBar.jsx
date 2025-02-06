@@ -1,5 +1,5 @@
-import logo from "../images/logo.png"
-import CartWidget from "./CartWidget/CartWidget"
+import logo from "../../images/logo.png"
+import CartWidget from "../CartWidget/CartWidget"
 import React from 'react'
 
 const NavBar = () => {

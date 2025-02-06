@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link, NavLink} from "react-router-dom"
-import "../../Components/NavBar.css"
+import "../NavBar/NavBar.css"
 //Extraje el estilo del NavBar.css
 
 const Categorias = () => {
