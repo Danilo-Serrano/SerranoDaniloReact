@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link, NavLink} from "react-router-dom"
 import "../NavBar/NavBar.css"
+import "../Categorias/Categorias.css"
 //Extraje el estilo del NavBar.css
 
 const Categorias = () => {
@@ -23,8 +24,6 @@ return (
             <li className="Categories-li">
                 <NavLink to="/Televisiones">Televisiones</NavLink>
             </li>
-
-
         </ul>
         </div>
     </div>

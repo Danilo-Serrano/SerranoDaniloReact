@@ -1,13 +1,16 @@
-import carritoImg from "../../images/carrito.png"
+// CartWidget.jsx
+import React, { useContext } from 'react';
+
 import "./CartWidget.css";
 
 const CartWidget = () => {
-    return (
-    <div>
-        <img src={carritoImg} className="carrito" alt="Carrito"/>
-        <strong>4</strong>
-    </div>
-    )
-}
 
-export default CartWidget
+return (
+    <div>
+    <img src="/images/carrito.png" className="carrito" alt="Carrito" />
+    </div>
+    
+);
+};
+
+export default CartWidget;

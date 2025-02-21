@@ -1,0 +1,13 @@
+.container--Item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 310px;
+}
+.line{
+    height: 2px;
+    max-width: 1300px;
+    background-color: rgb(189, 189, 189);
+    justify-content: center;
+    margin: 0 350px;
+}

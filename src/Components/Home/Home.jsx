@@ -1,8 +1,11 @@
 import React from 'react'
+import "../Home/Home.css"
 
 const Home = () => {
   return (
-    <h3>Bienvenido al Home</h3>
+    <div className='banner--container'>
+    <img className='banner' src="/images/banner.png" />
+    </div>
   )
 }
 

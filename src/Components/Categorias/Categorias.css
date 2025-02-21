@@ -1,0 +1,11 @@
+.Auto-Container2{
+    display: flex;
+    justify-content: center;
+}
+.Categories a {
+    text-decoration: none;
+    color: rgb(159, 159, 159);
+}
+.Categories a:hover {
+    color: rgb(92, 91, 91);
+}
