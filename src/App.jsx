@@ -13,7 +13,6 @@ import ItemListContainer from "./Components/ItemListContainer/ItemListContainer"
 import { CarritoProvider } from "./Components/Context/CarritoContext";
 import Carrito from "./Components/Context/Carrito.jsx"
 import CartWidget from "./Components/CartWidget/CartWidget.jsx";
-import Formulario from "./Components/Formulario/Formulario.jsx";
 import Productos from "./Components/Productos/Productos.jsx";
 
 function App() {
@@ -32,11 +31,11 @@ function App() {
         <Route path="/carrito" element={<Carrito />} />
       </Routes>
       <ItemListContainer />
-      <Ofertas />
       <CartWidget/>
-      <Formulario/>
+
       </CarritoProvider>
       <Productos/>
+      <Ofertas />
     </>
   );
 }

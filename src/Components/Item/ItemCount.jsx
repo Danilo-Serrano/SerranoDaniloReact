@@ -17,10 +17,19 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 
     return (
         <div className="item-count">
-            <button className='buy--button' onClick={handleRestar} disabled={cantidad <= 1}>-</button>
+            <button className='operation' onClick={handleRestar} disabled={cantidad <= 1}>-</button>
             <span className='see--button Numero'>{cantidad}</span>
-            <button className='buy--button' onClick={handleSumar} disabled={cantidad >= stock}>+</button>
-            <button className='buy--button Numero1' onClick={() => onAdd(cantidad)}>Agregar al Carrito</button>
+            <button className='operation' onClick={handleSumar} disabled={cantidad >= stock}>+</button>
+            <button 
+    className='buy--button Numero1' 
+    onClick={() => {
+        alert("Producto agregado al carrito");
+        onAdd(cantidad);
+    }}
+>
+    Agregar al Carrito
+</button>
+
         </div>
     );
 };

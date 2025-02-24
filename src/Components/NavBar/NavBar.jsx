@@ -42,9 +42,7 @@ const NavBar = () => {
         </div>
     </div>
 
-    <div className="BackgroundBody">
 
-    </div>
     </>
     )
 }

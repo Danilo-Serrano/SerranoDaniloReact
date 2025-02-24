@@ -44,13 +44,13 @@
 }
 .NavBarBackground{
     height: 90px;
-    background-color: #060d84;
+    background-color: #007bff;
     display: flex;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     z-index: 1000;
 }
 .Ul-Input{
-    background-color: #060d84;
+    background-color: #007bff;
     border-radius: 8px;
     border: 2px solid white;
     padding: 0px 2px;
@@ -140,4 +140,40 @@ div ul li{
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+@media (max-width: 926px) {
+    .Ul-Input{
+        display: none;
+    }
+}
+@media (max-width: 670px) {
+    .NavBar-Right, .a--ofertas{
+        font-size: 15px;
+        margin: 0px 5px;
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .tittle{
+        font-size: 33px;
+        margin-left: 0;
+    }
+    .Categories{
+        display: flex;
+        flex-direction: column;
+    }
+    .ContainerCategories{
+    height: 100px;
+    }
+}
+@media (max-width: 541px) {
+    .Auto-Container{
+        display: flex;
+        flex-direction: column;
+    }
+    .NavBarBackground{
+        height: 150px;
+    }
+    .ContainerCategories{
+        margin-top: 180px;
+    }
 }

@@ -1,0 +1,92 @@
+.carrito{
+    width: 77px;
+}
+.Carrito--Container {
+    max-width: 90%;
+    margin: auto;
+    padding: 20px;
+}
+
+.product-card--Carrito {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.grid-header {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr; 
+    gap: 20px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.producto-carrito {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr; /* 4 columnas */
+    gap: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.product-name, .product-quantity, .product-price, .product-total {
+    padding: 5px;
+}
+
+.eliminar-boton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}
+.eliminar-boton {
+    background-color: #f44336;
+    color: white;
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; 
+    border: none;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eliminar-boton:hover {
+    background-color: #d32f2f; 
+    transform: scale(1.1); 
+}
+.CantidadTotal {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    font-size: 18px;
+}
+.total{
+    display: flex;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    justify-content: start;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.see--button{
+    margin-right: 2px;
+}
+.p{
+    margin: auto;
+}
+.product--stock{
+    text-align: start;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

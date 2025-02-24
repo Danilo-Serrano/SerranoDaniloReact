@@ -1,54 +1,69 @@
 .form--container {
-    width: 100%;
-    max-width: 500px;            
-    margin: 20px auto;          
-    padding: 20px;             
-    background-color: #f9f9f9;   
-    border-radius: 8px;          
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(1px); 
 }
+
+.formulario {
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: white;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    z-index: 10; 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 .form--h2 {
     text-align: center;
-    font-size: 24px;             
-    margin-bottom: 20px;         
-    color: #333;               
+    color: #333;
+    font-size: 1.5rem;
 }
+
 .form--label {
-    display: block;
-    font-size: 16px;            
-    margin-bottom: 8px;          
-    color: #555;               
+    font-weight: bold;
+    color: #555;
+    margin-top: 8px;
 }
+
+
 .form--input {
-    width: 100%;                 
-    padding: 10px;              
-    margin-bottom: 15px;        
-    border: 2px solid #ddd;      
-    border-radius: 5px;          
-    font-size: 16px;             
-    background-color: #fff;      
-    transition: border-color 0.3s ease; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
 }
+
 .form--input:focus {
-    border-color: #4CAF50;
-    outline: none;       
+    border-color: #007bff;
+    outline: none;
 }
+
 .form--button {
-    width: 100%;              
-    padding: 12px;           
-    font-size: 16px;         
-    background-color: #4CAF50; 
-    color: white;             
-    border: none;            
-    border-radius: 5px;      
-    cursor: pointer;         
-    transition: background-color 0.3s ease, transform 0.2s ease; 
+    margin-top: 12px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
+
 .form--button:hover {
-    background-color: #45a049;
-    transform: scale(1.05);    
-}
-.form--button:active {
-    background-color: #388e3c; 
-    transform: scale(0.98);   
+    background-color: #0056b3;
 }

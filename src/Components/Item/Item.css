@@ -11,3 +11,22 @@
     justify-content: center;
     margin: 0 350px;
 }
+.operation{
+    border: none;
+    font-size: 20px;
+    color: black;
+    margin: 0px 10px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 254);
+}
+@media (max-width: 1200px) {
+    .container--Item {
+        margin: 0px 100px;
+    }
+    .line, .products-title {
+        margin: 0 50px;
+    }
+    .ofertas--container2{
+        margin-left: 55px;
+    }
+}

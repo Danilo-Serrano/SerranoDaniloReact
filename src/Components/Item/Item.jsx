@@ -11,11 +11,11 @@ const Item = ({ id, nombre, precio, img, marca }) => {
             <img src={img} alt={nombre} className="product-image" />
             <h5 className="product--brand">{marca}</h5>
             <h3 className="product--title">{nombre}</h3>
-            <p className="product--price2">{precio}</p>
+            <p className="product--price2">${precio}</p>
             <div className="button-container">
-    <Link className="see--button" to={`/item/${id}`}>
+        <Link className="see--button" to={`/item/${id}`}>
         <FontAwesomeIcon icon={faMagnifyingGlass} /> Ver detalles
-    </Link>
+        </Link>
 </div>
         </div>
         </div>
