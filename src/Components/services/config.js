@@ -1,6 +1,14 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  // Si tienes 'base: "/SerranoDaniloReact/"', ELIMÍNALO o déjalo como:
+  base: '/',
+})
 //30 días
 
 // Configuración de tu nuevo proyecto (gamerzone2)
