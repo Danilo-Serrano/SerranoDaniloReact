@@ -1,8 +1,23 @@
-# React + Vite
+# 🚀 GamerZone - E-commerce de Tecnología
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación web moderna para la exploración y compra de productos tecnológicos (celulares, laptops, accesorios y más). Proyecto desarrollado con React e integrado con Firebase para la gestión de datos en tiempo real.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tecnologías Utilizadas
+
+* **Frontend:** React.js / HTML5 / CSS3 / JavaScript (ES6+)
+* **Base de Datos & Servicios:** Firebase (Firestore / Authentication)
+* **Control de Versiones:** Git & GitHub
+
+---
+
+## ✨ Características Principales
+
+* 📱 **Catálogo de productos:** Filtrado de artículos por categorías (componentes, periféricos, audio, etc.).
+* 🛒 **Carrito de compras:** Agregar, modificar cantidades y calcular el total de la compra en tiempo real.
+* 📦 **Detalle de producto:** Vista individual con especificaciones e imágenes de cada artículo.
+* 💳 **Simulación de Checkout:** Procesamiento y generación de orden de compra guardada en Firebase.
+
+---
+
