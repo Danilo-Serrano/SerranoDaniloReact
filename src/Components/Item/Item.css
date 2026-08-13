@@ -1,32 +1,145 @@
-.container--Item {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 310px;
+/* Importación de variables y fuentes por si no están globales */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&family=Space+Grotesk:wght@700&display=swap');
+
+
+/* Reducimos un poco el padding interno y el ancho de la tarjeta */
+.product-card {
+  width: 100%; /* La tarjeta ocupa el 100% de su columna en la grilla */
+  box-sizing: border-box;
+  padding: 14px;
 }
-.line{
-    height: 2px;
-    max-width: 1300px;
-    background-color: rgb(189, 189, 189);
-    justify-content: center;
-    margin: 0 350px;
+/* Contenedor principal de tarjetas */
+.products-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+    padding: 0;
 }
-.operation{
-    border: none;
-    font-size: 20px;
-    color: black;
-    margin: 0px 10px;
-    cursor: pointer;
-    background-color: rgb(255, 255, 254);
+
+/* Tarjeta de Producto */
+.product-card {
+  background: rgba(18, 20, 29, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 242, 254, 0.15);
+  border-radius: 16px;
+  padding: 20px;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
-@media (max-width: 1200px) {
-    .container--Item {
-        margin: 0px 100px;
-    }
-    .line, .products-title {
-        margin: 0 50px;
-    }
-    .ofertas--container2{
-        margin-left: 55px;
-    }
+
+/* Hover en la Tarjeta: Elevación y resplandor neón */
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-cyan, #00f2fe);
+  box-shadow: 0 8px 25px rgba(0, 242, 254, 0.25);
 }
+
+/* Imagen del Producto */
+.product-image {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05); /* Efecto zoom suave a la imagen */
+}
+
+/* Marca */
+.product--brand {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-cyan, #00f2fe);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0 0 6px 0;
+}
+
+/* Título del Producto */
+.product--title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main, #f1f5f9);
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+  
+  /* Recorte a máximo 2 líneas para mantener uniformidad */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 2.6em;
+}
+
+/* Precio */
+.product--price2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-cyan, #00f2fe);
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 12px rgba(0, 242, 254, 0.35);
+}
+
+/* Contenedor del Botón */
+.button-container {
+  width: 100%;
+  margin-top: auto;
+}
+
+/* Botón "Ver detalles" */
+.see--button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 0;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(121, 40, 202, 0.2) 0%, rgba(0, 242, 254, 0.2) 100%);
+  border: 1px solid var(--accent-cyan, #00f2fe);
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+/* Hover interactivo con desplazamiento de icono */
+.see--button:hover {
+  background: linear-gradient(135deg, var(--accent-purple, #7928ca) 0%, var(--accent-cyan, #00f2fe) 100%);
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(0, 242, 254, 0.45);
+  transform: translateY(-1px);
+}
+
+.see--button svg {
+  transition: transform 0.25s ease;
+  font-size: 0.85rem;
+}
+
+.see--button:hover svg {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.see--button:active {
+  transform: translateY(0);
+}
+

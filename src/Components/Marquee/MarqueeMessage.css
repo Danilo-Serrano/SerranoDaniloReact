@@ -1,0 +1,39 @@
+.marquee-container {
+  width: 100%;
+  overflow: hidden; /* Oculta el texto cuando sale de la pantalla */
+  background-color: #1e1e2f;
+  color: #ffffff;
+  padding: 10px 0;
+  white-space: nowrap; /* Impide que el texto se divida en varias líneas */
+}
+
+.marquee-text {
+  display: inline-block;
+  padding-left: 100%; /* Empieza fuera del contenedor por la derecha */
+  animation: marquee 12s linear infinite;
+}
+
+/* Pausa el movimiento si el usuario pasa el cursor por encima */
+
+.marquee-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 12s linear infinite;
+
+  /* Estilos para el texto */
+  font-family: 'Poppins', sans-serif; /* Tipografía */
+  font-size: 0.8rem;                  /* Tamaño de letra */
+  font-weight: 700;                    /* Grosor (bold) */
+  color: var(--text-muted);                      /* Color del texto */
+  text-transform: uppercase;           /* Todo en mayúsculas */
+  letter-spacing: 2px;                 /* Espaciado entre letras */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para darle profundidad */
+}
+@keyframes marquee {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0); /* Se desplaza horizontalmente hacia la izquierda */
+  }
+}

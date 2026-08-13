@@ -1,146 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Plus+Jakarta+Sans:wght@400;500;700&family=Rajdhani:wght@500;600;700&display=swap');
 *{
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
-.header, .header--ul, .ul--left{
-    height: 27px;
-    font-size: 15px;
-    margin-top: -2px;
+/* Variables de tema */
+:root {
+  --bg-dark: #0a0b10;
+  --bg-card: rgba(18, 20, 29, 0.75);
+  --accent-cyan: #00f2fe;
+  --accent-purple: #7928ca;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-glow: rgba(0, 242, 254, 0.2);
 }
-.header {
-    width: 100%;
-    background-color: #f8f8f8; 
-    padding: 10px 20px;
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    z-index: 1000;
-}
-.header--ul {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    list-style: none;
-}
-.ul--left {
-    display: flex;
-    gap: 15px; 
-}
-.ul--right h4 {
-    margin: 0; 
-    margin-bottom: 16px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.logo{
-    max-width: 110px;
-    height: 75px;
-}
-.NavBarBackground {
-    position: fixed;
-    top: 25px;
-    width: 100%;
-    width: 100%;
-}
-.NavBarBackground{
-    height: 90px;
-    background-color: #007bff;
-    display: flex;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-}
-.Ul-Input{
-    background-color: #007bff;
-    border-radius: 8px;
-    border: 2px solid white;
-    padding: 0px 2px;
-    font-size: 20px;
-}
-.Auto-Container{
-    max-width: 1250px;
-    display: flex;
-    margin: auto;
-}
-.Auto-Container2{
-    display: flex;
-    margin: auto;
-}
-.NavBar-Left{
-    display: flex;
-    align-items: center;
-}
-.tittle{
-    font-size: 45px;
-    margin-left: 10px;
-    color: rgb(250, 250, 249);
-    text-decoration: none;
-    font-family: 'Impact', sans-serif;
-}
-.NavBar-Right, .a--ofertas{
-    color: rgb(229, 227, 227);
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-    text-decoration: none;
-}
-.NavBar-Right:hover{
-    color: grey;
-}
-.a--ofertas:hover{
-    color: grey;
-}
-.NavBar-Ul{
-    display: flex;
-}
-nav ul li{
-    list-style: none;
-    margin-right: 20px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-}
-.carrito-img{
-    max-width: 80px;
-}
-.ContainerCategories{
-    margin-top: 115px;
-    display: flex;
-    background-color: #dfe0e4;
-    width: 100%;
-    height: 45px;
-}
-.Categories{
-    display: flex;
-    list-style: none;
-}
-div ul li{
-    margin-left: 15px;
-    cursor: pointer;
-}
-.Categories-h4{
-    color: #a73991;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-}
-.Categories-li{
-    font-size: 20px;
-    color: rgb(213, 213, 213);
-    text-decoration: none;
-}
-.header--ul{
-    color: #54c4c2;
-}
-.ul--right, .a--ofertas, .Categories-li, .Categories-h4 {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
+/* Header superior (Redes y Marca) */
+.header {
+  background-color: #050608;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 6px 0;
+  font-size: 0.85rem;
 }
-.button-Carrito{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+
+.header--ul {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.ul--left {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+}
+
+.ul--left li {
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.ul--left li:hover {
+  color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.ul--right h4 {
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Barra de navegación principal (Efecto Glassmorphism) */
+.NavBarBackground {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-glow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.Auto-Container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Marca y Logo */
+.NavBar-Left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 42px;
+  width: auto;
+  filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.4));
+}
+
+.tittle {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  /* Creamos un degradado más amplio (4 colores para suavizar el paso) */
+  background: linear-gradient(
+    135deg, 
+    var(--text-main) 0%, 
+    var(--accent-cyan) 33%, 
+    var(--accent-purple) 66%, 
+    var(--text-main) 100%
+  );
+  
+  /* Hacemos que el fondo ocupe el doble del tamaño del texto */
+  background-size: 200% auto;
+  
+  /* Recortamos el fondo al contorno del texto */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Transición suave para el movimiento del fondo y el brillo */
+  transition: background-position 0.5s ease, filter 0.3s ease, transform 0.2s ease;
+  display: inline-block; /* Necesario para que transform y filtros funcionen bien */
+}
+
+/* Efecto al pasar el cursor (Hover) */
+.tittle:hover {
+  /* Desplazamos el degradado para revelar los colores neón */
+  background-position: right center;
+  
+  /* Agregamos un resplandor cian/púrpura sutil */
+  filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.6));
+  
+  /* Ligero aumento de tamaño opcional */
+  transform: scale(1.02);
+}
+
+/* Elementos de Navegación */
+.NavBar-Ul {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Campo de Búsqueda */
+.Ul-Input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: var(--text-main);
+  outline: none;
+  width: 180px;
+  transition: all 0.3s ease;
+}
+
+.Ul-Input::placeholder {
+  color: var(--text-muted);
+}
+
+.Ul-Input:focus {
+  width: 230px;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.25);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Estado Base (Mantiene tus propiedades existentes e integra la fuente) */
+.a--ofertas {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  position: relative;
+  padding: 4px 0; /* Un poco de espacio vertical para la línea */
+}
+
+/* Creación de la línea neón oculta debajo del texto */
+.a--ofertas::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%; /* Inicia sin ancho */
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+  border-radius: 2px;
+  box-shadow: 0 0 8px var(--accent-cyan);
+  transition: width 0.3s ease-in-out;
+}
+
+/* Hover: Cambia el color del texto y despliega la línea */
+.a--ofertas:hover {
+  color: var(--accent-cyan);
+}
+
+.a--ofertas:hover::after {
+  width: 100%; /* La línea se extiende completamente */
+}
+
+/* Estado Activo: Si usás NavLink para marcar la sección donde está parado el usuario */
+.a--ofertas.active {
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+.a--ofertas.active::after {
+  width: 100%;
+}
+
+/* Botón de Carrito */
+.button-Carrito {
+  background: rgba(255, 255, 255, 0.03); /* Fondo oscuro muy sutil */
+  border: 1px solid rgba(0, 242, 254, 0.3); /* Borde neón fino */
+  padding: 5px 10px; /* Relleno mucho más compacto */
+  border-radius: 20px; /* Bordes redondeados estilo píldora */
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Espacio si el icono lleva un contador al lado */
+  font-size: 0.85rem;
+  transition: all 0.25s ease;
+}
+
+/* Hover: Brillo neón sutil y fondo iluminado sin ser tosco */
+.button-Carrito:hover {
+  background: rgba(0, 242, 254, 0.1);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Efecto al hacer clic */
+.button-Carrito:active {
+  transform: translateY(0) scale(0.96);
+}  
 @media (max-width: 926px) {
     .Ul-Input{
         display: none;

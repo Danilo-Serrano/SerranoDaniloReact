@@ -1,0 +1,25 @@
+.cart-widget-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    cursor: pointer;
+}
+
+.cart-count {
+    background-color: var(--accent-cyan-local, #00f2fe);
+    color: #0a0b10;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    min-width: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+}
+.carrito {
+    width: 80px;            /* Define el ancho deseado */
+    height: 30px;           /* Define el alto deseado */
+    object-fit: contain;   /* Mantiene la proporción de la imagen */
+    display: block;
+}

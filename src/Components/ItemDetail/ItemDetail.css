@@ -1,36 +1,136 @@
-.ItemDetail--Container{
-    width: 100%;
-    max-width: 900px;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, .2);
-    margin: 10px auto;
-    padding: 10px;
-    gap: 20px;
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@700&display=swap');
+
+/* Contenedor Principal del Detalle */
+.ItemDetail--Container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 35px;
+  background: rgba(18, 20, 29, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 242, 254, 0.15);
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columnas iguales */
+  gap: 40px;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
 }
+
+/* Columna Izquierda (Información) */
 .ItemDetail--Container__left {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
+
+.ItemDetail--Container__left .product--brand {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-cyan, #00f2fe);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 8px 0;
+}
+
+.ItemDetail--Container__left .product--title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-main, #f1f5f9);
+  margin: 0 0 16px 0;
+  line-height: 1.25;
+}
+
+.ItemDetail--Container__left .product--price2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent-cyan, #00f2fe);
+  margin: 0 0 24px 0;
+  text-shadow: 0 0 15px rgba(0, 242, 254, 0.35);
+}
+
+/* Botón Volver / Atrás */
+.ItemDetail--Container__left a {
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.ItemDetail--Container__left .see--button {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-muted, #94a3b8);
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.ItemDetail--Container__left .see--button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateX(-3px);
+}
+
+/* Columna Derecha (Imagen y Contador) */
 .ItemDetail--Container__right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-sizing: border-box;
 }
+
 .product-image2 {
-    width: 100%;
-    max-width: 350px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+  transition: transform 0.3s ease;
 }
-.dos{
-    margin-top: 10px;
+
+.product-image2:hover {
+  transform: scale(1.04);
+}
+
+/* Contenedor del ItemCount alineado */
+.ItemDetail--Container__right .button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Centra el contador dentro de la columna */
+}
+
+/* Responsive para Pantallas Chicas / Celulares */
+@media (max-width: 768px) {
+  .ItemDetail--Container {
+    grid-template-columns: 1fr; /* Pasa a 1 columna vertical */
+    gap: 25px;
+    padding: 20px;
+    margin: 20px 15px;
+  }
+
+  .ItemDetail--Container__right {
+    order: -1; /* Muestra la imagen primero en celulares */
+  }
+
+  .ItemDetail--Container__left .product--title {
+    font-size: 1.4rem;
+  }
+
+  .ItemDetail--Container__left .product--price2 {
+    font-size: 1.7rem;
+  }
 }

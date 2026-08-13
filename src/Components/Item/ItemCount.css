@@ -1,0 +1,118 @@
+/* Encapsulamos todas las reglas dentro del contenedor específico */
+.item-count {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* Control de Cantidad (- / Número / +) */
+.item-count__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  border-radius: 10px;
+  padding: 6px 10px;
+}
+
+/* Botones + y - */
+.item-count__controls .operation {
+  width: 36px;
+  height: 36px;
+  min-width: 36px; /* Evita que se encojan */
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--accent-cyan, #00f2fe);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.item-count__controls .operation:hover:not(:disabled) {
+  background: rgba(0, 242, 254, 0.2);
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+}
+
+.item-count__controls .operation:disabled {
+  opacity: 0.3;
+  color: #64748b;
+}
+
+/* Visor del Número */
+.item-count__controls .Numero {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  user-select: none;
+}
+
+/* Botón "Agregar al Carrito" */
+.item-count .buy--button {
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, var(--accent-purple, #7928ca) 0%, var(--accent-cyan, #00f2fe) 100%);
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.25);
+}
+
+.item-count .buy--button:hover {
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+  transform: translateY(-2px);
+}
+
+.item-count .buy--button:active {
+  transform: translateY(0);
+}
+.counter-number{
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+/* Contenedor de los botones */
+.item-count__actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+    width: 100%; /* O el ancho que maneje tu tarjeta */
+}
+
+/* Aplicar el mismo tamaño a ambos botones */
+.item-count__actions .buy--button,
+.item-count__actions .see--button {
+    flex: 1; /* Hace que ambos ocupen exactamente el 50% del espacio disponible */
+    min-width: 140px; /* Ancho mínimo asegurable */
+    height: 42px; /* Misma altura para ambos */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    padding: 0 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.sin-stock-mensaje{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

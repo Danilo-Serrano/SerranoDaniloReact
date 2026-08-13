@@ -1,0 +1,15 @@
+.ItemListContainer{
+    background-color: var(--bg-dark);
+
+}
+.ofertas--container2{
+    margin-top: 20px;
+    color: var(--accent-cyan);
+}
+.line {
+  background-color: rgba(255, 255, 255, 0.1); /* Gris claro traslúcido */
+  height: 1px;
+  width: 100%;
+  margin: 25px 0; /* Espaciado arriba y abajo para separar secciones */
+  border: none;
+}

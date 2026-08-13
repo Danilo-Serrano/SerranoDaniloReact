@@ -1,18 +1,43 @@
-import React from 'react'
-import {getUnProducto} from "../../asyncMock"
-import { useState, useEffect } from 'react'
-import ItemDetail from '../ItemDetail/ItemDetail'
-import { useParams } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import ItemDetail from '../ItemDetail/ItemDetail';
+import { useParams } from 'react-router-dom';
+import { db } from '../services/config'; // <-- Asegúrate de que la ruta a tu config.js sea correcta
+import { doc, getDoc } from 'firebase/firestore';
 
 const ItemDetailContainer = () => {
-    const [producto, setProducto] = useState(null)
+    const [producto, setProducto] = useState(null);
+    const [cargando, setCargando] = useState(true);
 
-    const { id } = useParams();
+    const { id } = useParams(); // Obtenemos la ID alfanumérica de Firebase desde la URL
 
-    useEffect(() =>{
-        getUnProducto(id)
-        .then(respuesta => setProducto(respuesta))
-    }, [id])
+    useEffect(() => {
+        setCargando(true);
+
+        // 1. Creamos la referencia al documento en la colección 'productos'
+        const nuevoDoc = doc(db, "productos", id);
+
+        // 2. Traemos el documento de Firestore
+        getDoc(nuevoDoc)
+            .then(res => {
+                if (res.exists()) {
+                    setProducto({ id: res.id, ...res.data() });
+                } else {
+                    console.error("El producto no existe en Firestore");
+                }
+            })
+            .catch(error => console.error("Error al obtener el producto:", error))
+            .finally(() => setCargando(false));
+
+    }, [id]);
+
+    // 3. Controlamos el estado mientras carga o si no existe para evitar que rompa ItemDetail
+    if (cargando) {
+        return <h3 style={{ textAlign: 'center', marginTop: '30px' }}>Cargando detalle del producto...</h3>;
+    }
+
+    if (!producto) {
+        return <h3 style={{ textAlign: 'center', marginTop: '30px' }}>El producto solicitado no existe.</h3>;
+    }
 
     return (
         <div>

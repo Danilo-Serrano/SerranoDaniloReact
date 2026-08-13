@@ -3,6 +3,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faTiktok, faWhatsapp } from "@fortawesome/free-brands-svg-icons"; 
 import { Link } from 'react-router-dom';
+
 const NavBar = () => {
     return (
         <>
@@ -14,14 +15,14 @@ const NavBar = () => {
                 <li><FontAwesomeIcon icon={faWhatsapp} /></li>
                 </div>
                 <div className="ul--right">
-                <h4>GamerZone.com.ar</h4>
+                <h4 className="a--ofertas">GamerZone.com.ar</h4>
                 </div>
             </div>
         </div>
     <div className="NavBarBackground">
         <div className="Auto-Container">
         <div className="NavBar-Left">
-        <img src="../public/images/logo.png" className="logo"/>
+        <img src="/images/logo.png" className="logo"/>
         <a className="tittle" href="/">GamerZone</a>
         </div>
         <div className="NavBar-Right">

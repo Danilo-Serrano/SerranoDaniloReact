@@ -1,20 +1,20 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+//30 días
+
+// Configuración de tu nuevo proyecto (gamerzone2)
 const firebaseConfig = {
-    apiKey: "AIzaSyC2A7aOYD3qCKqlNuUv6wUirPnI62BWHKk",
-    authDomain: "gamerzone-e-commerce.firebaseapp.com",
-    projectId: "gamerzone-e-commerce",
-    storageBucket: "gamerzone-e-commerce.firebasestorage.app",
-    messagingSenderId: "698361825274",
-    appId: "1:698361825274:web:9289efb799ab75ffdd8643"
+  apiKey: "AIzaSyADPewYKF7iS_0t14rwVtAIzsVOsSo-tYU",
+  authDomain: "gamerzone2.firebaseapp.com",
+  projectId: "gamerzone2",
+  storageBucket: "gamerzone2.firebasestorage.app",
+  messagingSenderId: "515300556983",
+  appId: "1:515300556983:web:3dfddee6eeb6457ea64d32"
 };
 
-// Initialize Firebase
+// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 
+// Exportar la base de datos para usarla en tus componentes
 export const db = getFirestore(app);

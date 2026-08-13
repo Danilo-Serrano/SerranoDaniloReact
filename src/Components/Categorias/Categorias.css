@@ -1,11 +1,70 @@
-.Auto-Container2{
-    display: flex;
-    justify-content: center;
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&family=Rajdhani:wght@600;700&display=swap');
+.ContainerCategories {
+  background-color: #08090d;
+  border-bottom: 1px solid rgba(0, 242, 254, 0.15);
+  padding: 10px 0;
 }
-.Categories a {
-    text-decoration: none;
-    color: rgb(159, 159, 159);
+
+.Auto-Container2 {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
 }
-.Categories a:hover {
-    color: rgb(92, 91, 91);
+
+/* Título "Categorías" */
+.Categories-h4 {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #00f2fe; /* Acento cian neón */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* Lista de Categorías */
+.Categories {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.Categories-li a {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #94a3b8; /* Gris suave */
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.25s ease;
+}
+
+/* Hover en los enlaces */
+.Categories-li a:hover {
+  color: #f1f5f9;
+  background: rgba(0, 242, 254, 0.1);
+  border-color: rgba(0, 242, 254, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Estilo automático para la categoría activa (gracias a NavLink) */
+.Categories-li a.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(121, 40, 202, 0.6) 0%, rgba(0, 242, 254, 0.6) 100%);
+  border-color: #00f2fe;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+}
+.products-title{
+  margin-top: 20px;
 }
