@@ -1,16 +1,18 @@
 import React, { useContext } from 'react';
-import { CarritoContext } from '../Context/CarritoContext.jsx'; // Ajusta la ruta si es necesario
+import { CarritoContext } from '../Context/CarritoContext.jsx';
 import "./CartWidget.css";
+// 1. Importas la imagen como un módulo
+import carritoImg from '../../../public/images/carrito.png'; // Ajusta la ruta a tu carpeta assets
 
 const CartWidget = () => {
     const { carrito } = useContext(CarritoContext);
 
-    // Cuenta cuántos productos distintos hay en el array
     const productosDistintos = carrito.length;
 
     return (
         <div className="cart-widget-container">
-            <img src="/images/carrito.png" className="carrito" alt="Carrito" />
+            {/* 2. Usas la variable importada en el src */}
+            <img src={carritoImg} className="carrito" alt="Carrito" />
             <span className="cart-count">{productosDistintos}</span>
         </div>
     );
