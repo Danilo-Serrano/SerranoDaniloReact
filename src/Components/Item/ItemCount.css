@@ -1,118 +1,112 @@
-/* Encapsulamos todas las reglas dentro del contenedor específico */
+/* ==========================================================================
+   Selector de cantidad y acciones — estilo editorial (guía de diseño: CLAUDE.md)
+   Botones planos y rectangulares, sin degradados, sombras ni animaciones.
+   Los botones usan clases propias (.item-count__btn) y no las globales
+   .buy--button / .see--button, que comparten el carrito y otras pantallas.
+   ========================================================================== */
 .item-count {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   width: 100%;
-  max-width: 280px;
-  margin: 0 auto;
+  max-width: 360px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Control de Cantidad (- / Número / +) */
+/* Control de cantidad: - / número / + */
 .item-count__controls {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(0, 242, 254, 0.25);
-  border-radius: 10px;
-  padding: 6px 10px;
+  border: 1px solid #262629;
+  background: #141415;
 }
 
-/* Botones + y - */
 .item-count__controls .operation {
-  width: 36px;
-  height: 36px;
-  min-width: 36px; /* Evita que se encojan */
+  width: 44px;
+  height: 44px;
   border: none;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--accent-cyan, #00f2fe);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  border-radius: 8px;
+  border-radius: 0;
+  background: transparent;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1.125rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
+  transition: background-color 0.15s;
 }
 
 .item-count__controls .operation:hover:not(:disabled) {
-  background: rgba(0, 242, 254, 0.2);
-  box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+  background: #1A1A1C;
 }
 
 .item-count__controls .operation:disabled {
-  opacity: 0.3;
-  color: #64748b;
+  color: #52525b;
+  cursor: not-allowed;
 }
 
-/* Visor del Número */
-.item-count__controls .Numero {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
+.counter-number {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.875rem;
   color: #ffffff;
   user-select: none;
 }
 
-/* Botón "Agregar al Carrito" */
-.item-count .buy--button {
-  width: 100%;
-  padding: 12px 0;
-  border-radius: 10px;
-  border: none;
-  background: linear-gradient(135deg, var(--accent-purple, #7928ca) 0%, var(--accent-cyan, #00f2fe) 100%);
-  color: #ffffff;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.25);
-}
-
-.item-count .buy--button:hover {
-  box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
-  transform: translateY(-2px);
-}
-
-.item-count .buy--button:active {
-  transform: translateY(0);
-}
-.counter-number{
-    color: white;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-}
-/* Contenedor de los botones */
 .item-count__actions {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 12px;
-    width: 100%; /* O el ancho que maneje tu tarjeta */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-/* Aplicar el mismo tamaño a ambos botones */
-.item-count__actions .buy--button,
-.item-count__actions .see--button {
-    flex: 1; /* Hace que ambos ocupen exactamente el 50% del espacio disponible */
-    min-width: 140px; /* Ancho mínimo asegurable */
-    height: 42px; /* Misma altura para ambos */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    text-decoration: none;
-    box-sizing: border-box;
-    padding: 0 12px;
-    font-size: 0.9rem;
-    font-weight: 600;
+.item-count__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 44px;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s;
 }
-.sin-stock-mensaje{
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+/* Alto contraste: blanco sobre negro */
+.item-count__btn--principal {
+  border: none;
+  background: #ffffff;
+  color: #000000;
+}
+
+.item-count__btn--principal:hover {
+  background: #e4e4e7;
+}
+
+.item-count__btn--secundario {
+  border: 1px solid #3f3f46;
+  background: transparent;
+  color: #ffffff;
+}
+
+.item-count__btn--secundario:hover {
+  background: #1A1A1C;
+  border-color: #52525b;
+}
+
+.item-count__btn:focus-visible,
+.item-count__controls .operation:focus-visible {
+  outline: 1px solid #F4F4F0;
+  outline-offset: 2px;
+}
+
+.sin-stock-mensaje {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #71717a;
 }

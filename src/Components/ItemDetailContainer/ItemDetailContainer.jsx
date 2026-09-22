@@ -3,6 +3,7 @@ import ItemDetail from '../ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
 import { db } from '../services/config'; // <-- Asegúrate de que la ruta a tu config.js sea correcta
 import { doc, getDoc } from 'firebase/firestore';
+import "../ItemListContainer/ItemListContainer.css";
 
 const ItemDetailContainer = () => {
     const [producto, setProducto] = useState(null);
@@ -32,11 +33,11 @@ const ItemDetailContainer = () => {
 
     // 3. Controlamos el estado mientras carga o si no existe para evitar que rompa ItemDetail
     if (cargando) {
-        return <h3 style={{ textAlign: 'center', marginTop: '30px' }}>Cargando detalle del producto...</h3>;
+        return <p className="pg-estado">Cargando producto...</p>;
     }
 
     if (!producto) {
-        return <h3 style={{ textAlign: 'center', marginTop: '30px' }}>El producto solicitado no existe.</h3>;
+        return <p className="pg-estado">El producto solicitado no existe.</p>;
     }
 
     return (

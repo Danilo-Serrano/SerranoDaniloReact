@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
+import { getAuth, connectAuthEmulator } from "firebase/auth";
 
 // Configuración de tu proyecto en Firebase
 const firebaseConfig = {
@@ -14,5 +15,13 @@ const firebaseConfig = {
 // Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 
-// Exportar la base de datos
+// Exportar la base de datos y la autenticación
 export const db = getFirestore(app);
+export const auth = getAuth(app);
+
+// Opcional: con VITE_USE_EMULATORS=true la app usa los emuladores locales de
+// Firestore y Auth en vez de producción (útil para probar el panel /admin sin tocar datos reales).
+if (import.meta.env.VITE_USE_EMULATORS === "true") {
+  connectFirestoreEmulator(db, "127.0.0.1", 8080);
+  connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true });
+}

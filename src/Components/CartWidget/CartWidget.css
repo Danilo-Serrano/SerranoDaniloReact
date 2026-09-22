@@ -1,25 +1,31 @@
+/* Ícono de bolsa con contador plano, sin contenedor de color detrás */
 .cart-widget-container {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
     position: relative;
-    cursor: pointer;
+}
+
+/* El texto "Carrito" queda solo para lectores de pantalla */
+.cart-widget__texto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
 }
 
 .cart-count {
-    background-color: var(--accent-cyan-local, #00f2fe);
-    color: #0a0b10;
-    font-weight: 800;
-    font-size: 0.85rem;
-    padding: 2px 8px;
-    border-radius: 12px;
-    min-width: 20px;
+    position: absolute;
+    top: -9px;
+    right: -12px;
+    min-width: 18px;
+    padding: 2px 6px;
+    border-radius: 9999px;
+    background: #ffffff;
+    color: #000000;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.75rem;
+    line-height: 1;
     text-align: center;
-    box-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
-}
-.carrito {
-    width: 80px;            /* Define el ancho deseado */
-    height: 30px;           /* Define el alto deseado */
-    object-fit: contain;   /* Mantiene la proporción de la imagen */
-    display: block;
 }

@@ -10,16 +10,16 @@ const Categorias = () => {
                 <h4 className="Categories-h4">Categorías</h4>
                 <ul className="Categories">
                     <li className="Categories-li">
-                        <NavLink to="/categoria/videojuegos">Videojuegos</NavLink>
+                        <NavLink to="/categoria/nike">Nike</NavLink>
                     </li>
                     <li className="Categories-li">
-                        <NavLink to="/categoria/computadoras">Computadoras</NavLink>
+                        <NavLink to="/categoria/adidas">Adidas</NavLink>
                     </li>
                     <li className="Categories-li">
-                        <NavLink to="/categoria/celulares">Celulares</NavLink>
+                        <NavLink to="/categoria/umbro">Umbro</NavLink>
                     </li>
                     <li className="Categories-li">
-                        <NavLink to="/categoria/television">Televisión</NavLink>
+                        <NavLink to="/categoria/new-balance">New Balance</NavLink>
                     </li>
                 </ul>
             </div>

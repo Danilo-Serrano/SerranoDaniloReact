@@ -1,0 +1,72 @@
+/* ==========================================================================
+   Footer mínimo — estilo editorial (guía de diseño: CLAUDE.md)
+   Mismo fondo y divisor que la Navbar y las categorías.
+   ========================================================================== */
+.ft {
+  margin-top: 64px;
+  background-color: #0F0F10;
+  border-top: 1px solid #262629;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.ft-contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+}
+
+.ft-marca {
+  font-size: 0.875rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.ft-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+}
+
+.ft-links a {
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #a1a1aa;
+  transition: color 0.15s;
+}
+
+.ft-links a:hover {
+  color: #ffffff;
+}
+
+.ft-copy {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #71717a;
+}
+
+.ft a:focus-visible {
+  outline: 1px solid #F4F4F0;
+  outline-offset: 2px;
+}
+
+@media (max-width: 670px) {
+  .ft-contenedor {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 16px;
+  }
+}

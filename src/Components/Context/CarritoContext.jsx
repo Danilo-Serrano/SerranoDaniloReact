@@ -1,4 +1,5 @@
-import { useState, createContext } from "react";
+import { useState, useEffect, createContext } from "react";
+import { leerCarritoGuardado, guardarCarrito } from "../services/carritoStorage";
 
 export const CarritoContext = createContext({
     carrito: [],
@@ -7,76 +8,49 @@ export const CarritoContext = createContext({
 });
 
 export const CarritoProvider = ({ children }) => {
-    const [carrito, setCarrito] = useState([]);
-    const [total, setTotal] = useState(0);
-    const [cantidadTotal, setCantidadTotal] = useState(0);
+    // Al abrir la tienda se recupera el carrito guardado en el navegador (se lee una sola vez).
+    const [carrito, setCarrito] = useState(leerCarritoGuardado);
 
-    console.log(carrito);
-    console.log("cantidad items", cantidadTotal);
-    console.log("monto total", total);
+    // Cada cambio del carrito se guarda para recordarlo al recargar o volver más tarde.
+    useEffect(() => {
+        guardarCarrito(carrito);
+    }, [carrito]);
 
-const agregarAlCarrito = (item, cantidad) => {
-    const productoExistente = carrito.find((prod) => prod.item.id === item.id);
-    if (!productoExistente) {
+    // Se calculan a partir del carrito: así nunca quedan desfasados de lo que se restauró.
+    const cantidadTotal = carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
+    const total = carrito.reduce((acc, prod) => acc + prod.item.precio * prod.cantidad, 0);
 
-    setCarrito((prev) => [...prev, { item, cantidad }]);
-    setCantidadTotal((prev) => prev + cantidad);
-      setTotal((prev) => prev + item.precio * cantidad);
+    const agregarAlCarrito = (item, cantidad) => {
+        setCarrito((prev) => {
+            const existe = prev.some((prod) => prod.item.id === item.id);
+            if (!existe) return [...prev, { item, cantidad }];
+            // Al sumar más unidades se refresca el producto, por si el precio guardado quedó viejo.
+            return prev.map((prod) =>
+                prod.item.id === item.id ? { item, cantidad: prod.cantidad + cantidad } : prod
+            );
+        });
+    };
 
-    console.log(`Producto agregado al carrito: ${item.nombre}`);
+    const eliminarProducto = (id) => {
+        setCarrito((prev) => prev.filter((prod) => prod.item.id !== id));
+    };
 
-    
-    } else {
+    const vaciarCarrito = () => {
+        setCarrito([]);
+    };
 
-    const carritoActualizado = carrito.map((prod) => {
-        if (prod.item.id === item.id) {
-        const nuevaCantidad = prod.cantidad + cantidad;
-        return { ...prod, cantidad: nuevaCantidad };
-        }
-        return prod;
-    });
-
-    setCarrito(carritoActualizado);
-
-    const nuevaCantidadTotal = carritoActualizado.reduce(
-        (acc, prod) => acc + prod.cantidad,
-        0
+    return (
+        <CarritoContext.Provider
+            value={{
+                carrito,
+                total,
+                cantidadTotal,
+                agregarAlCarrito,
+                eliminarProducto,
+                vaciarCarrito,
+            }}
+        >
+            {children}
+        </CarritoContext.Provider>
     );
-    setCantidadTotal(nuevaCantidadTotal);
-    const nuevoMontoTotal = carritoActualizado.reduce(
-        (acc, prod) => acc + prod.item.precio * prod.cantidad,
-        0
-    );
-    setTotal(nuevoMontoTotal);
-    }
-};
-
-const eliminarProducto = (id) => {
-    const productoEliminado = carrito.find((prod) => prod.item.id === id);
-    const carritoActualizado = carrito.filter((prod) => prod.item.id !== id);
-    setCarrito(carritoActualizado);
-    setCantidadTotal((prev) => prev - productoEliminado.cantidad);
-    setTotal((prev) => prev - productoEliminado.item.precio * productoEliminado.cantidad);
-};
-
-const vaciarCarrito = () => {
-    setCarrito([]);
-    setCantidadTotal(0);
-    setTotal(0);
-};
-
-return (
-    <CarritoContext.Provider
-        value={{
-        carrito,
-        total,
-        cantidadTotal,
-        agregarAlCarrito,
-        eliminarProducto,
-        vaciarCarrito,
-    }}
-    >
-    {children}
-    </CarritoContext.Provider>
-);
 };

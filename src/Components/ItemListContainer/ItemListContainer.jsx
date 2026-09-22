@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import { db } from '../services/config';
 import { collection, getDocs } from 'firebase/firestore';
 import ItemList from '../ItemList/ItemList';
-import "../Ofertas/Ofertas.css";
+import { CATEGORIAS } from "../services/productos";
+import "./ItemListContainer.css";
 
 const ItemListContainer = () => {
     const [productos, setProductos] = useState([]);
@@ -33,25 +34,14 @@ const ItemListContainer = () => {
                 const cat = idCategoria.toLowerCase();
 
                 const filtrados = todosLosProductos.filter(prod => {
-                    const nombre = prod.nombre.toLowerCase();
-                    const marca = prod.marca.toLowerCase();
+                    // Productos cargados desde el panel /admin: traen su categoría.
+                    if (prod.categoria) {
+                        return prod.categoria.toLowerCase() === cat;
+                    }
 
-                    // Mapeo flexible según lo que dice en el nombre o marca 
-                    // (tarea q falta hacer) la MEJOR opción sería agregar categoría en el async o BD 
-                    if (cat === "celulares") {
-                        return nombre.includes("celular") || marca === "iphone" || marca === "samsung";
-                    }
-                    if (cat === "computadoras") {
-                        return nombre.includes("notebook") || marca === "hp" || marca === "acer" || marca === "lenovo";
-                    }
-                    if (cat === "television") {
-                        return nombre.includes("tv") || nombre.includes("smart") || marca === "e-nova" || marca === "philips" || marca === "rca";
-                    }
-                    if (cat === "videojuegos") {
-                        return marca === "ps5" || marca === "ps4" || nombre.includes("god of war") || nombre.includes("control") || nombre.includes("detroit");
-                    }
-                    
-                    return false;
+                    // Productos anteriores (sin categoría): se deducen por marca ("New Balance" → "new-balance").
+                    const marca = (prod.marca || "").toLowerCase().trim().replace(/\s+/g, "-");
+                    return marca === cat;
                 });
 
                 setProductos(filtrados);
@@ -61,16 +51,25 @@ const ItemListContainer = () => {
 
     }, [idCategoria]);
 
-    if (cargando) return <h2 style={{ textAlign: 'center', marginTop: '20px' }}>Cargando catálogo...</h2>;
+    if (cargando) return <p className="pg-estado">Cargando catálogo...</p>;
+
+    // El título muestra el nombre de la categoría (con tilde), no el texto de la URL.
+    const titulo = idCategoria
+        ? CATEGORIAS.find((c) => c.valor === idCategoria.toLowerCase())?.etiqueta ?? idCategoria
+        : "Productos";
 
     return (
-        <div>
-            <h2 className='products-title' style={{ textTransform: 'capitalize' }}>
-                {idCategoria ? idCategoria : 'Productos'}
-            </h2>
-            <div className='line'></div>
-            <ItemList productos={productos} />
-        </div>
+        <section className="pg">
+            <header className="pg-encabezado">
+                <h2 className="pg-titulo" id="catalogo">{titulo}</h2>
+                <p className="pg-subtitulo">
+                    {productos.length} {productos.length === 1 ? "producto" : "productos"}
+                </p>
+            </header>
+            {productos.length === 0
+                ? <p className="pg-estado">Todavía no hay productos en esta categoría.</p>
+                : <ItemList productos={productos} />}
+        </section>
     );
 };
 

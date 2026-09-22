@@ -1,0 +1,55 @@
+// REGLAS SUGERIDAS (no se aplican solas: este archivo no está referenciado en firebase.json).
+//
+// Qué protegen:
+//   - El catálogo (productos) lo puede leer cualquiera, pero SOLO el administrador puede crear,
+//     modificar o borrar productos (panel /admin). La protección de la ruta /admin en React es
+//     solo de interfaz: estas reglas son lo que realmente impide que otra persona escriba.
+//   - Las órdenes (datos personales) quedan cerradas: solo las Cloud Functions las leen y
+//     escriben con el Admin SDK, que ignora estas reglas.
+//
+// Pasos para aplicarlas:
+//   1. Firebase Console > Authentication > Sign-in method: habilitar "Correo electrónico/contraseña".
+//   2. Firebase Console > Authentication > Users > "Agregar usuario": crear el usuario administrador.
+//   3. Copiar el "UID de usuario" de esa fila y pegarlo en ADMIN_UIDS (abajo), reemplazando el marcador.
+//   4. Copiar este contenido en Firebase Console > Firestore > Reglas > Publicar
+//      (o crear firestore.rules, agregar "firestore": {"rules": "firestore.rules"} a firebase.json
+//      y ejecutar `firebase deploy --only firestore:rules`).
+//
+// Importante: cualquier usuario autenticado NO es administrador. Por eso se compara el UID contra
+// una lista explícita: la API de Firebase Auth permite registrar cuentas nuevas con la clave
+// pública de la app, así que "estar logueado" no alcanza como criterio.
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function esAdmin() {
+      return request.auth != null
+        && request.auth.uid in ['7Q6QtMUPWPSuFpL2kPTiz4QOpgs2'];
+    }
+
+    // Un producto válido: precio numérico > 0 y stock entero >= 0.
+    function productoValido() {
+      let p = request.resource.data;
+      return p.nombre is string && p.nombre.size() > 0
+        && p.precio is number && p.precio > 0
+        && p.stock is int && p.stock >= 0;
+    }
+
+    match /productos/{productoId} {
+      allow read: if true;
+      allow create, update: if esAdmin() && productoValido();
+      allow delete: if esAdmin();
+    }
+
+    // Las órdenes contienen datos personales: solo el backend las lee y escribe.
+    match /ordenes/{ordenId} {
+      allow read, write: if false;
+    }
+
+    // Todo lo demás, cerrado.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

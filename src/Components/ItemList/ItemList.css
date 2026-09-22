@@ -1,10 +1,17 @@
+/* Grilla del catálogo: el espacio en blanco separa las tarjetas (guía de diseño: CLAUDE.md) */
 .container--Item {
-    display: flex;
-    flex-wrap: wrap;          /* Permite que se acomoden en varias filas si no entran */
-    justify-content: center;   /* Centra los productos horizontalmente */
-    align-items: flex-start;
-    gap: 12px;                /* Poca separación entre tarjetas (ajusta este valor si quieres más o menos) */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 32px;
     max-width: 1200px;        /* Evita que se estire demasiado en pantallas gigantes */
     margin: 0 auto;           /* Centra el contenedor en la pantalla */
     padding: 20px;
+}
+
+@media (max-width: 540px) {
+    .container--Item {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        padding: 16px;
+    }
 }

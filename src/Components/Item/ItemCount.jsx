@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import './ItemCount.css';
 import { toast } from 'react-toastify';
 
-const ItemCount = ({ stock, initial, onAdd }) => {
+const formatoPrecio = (valor) =>
+    new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(valor);
+
+// precio es opcional: si viene, el botón muestra el total ("AGREGAR — $ 40.000").
+const ItemCount = ({ stock, initial, onAdd, precio }) => {
     const [cantidad, setCantidad] = useState(initial);
 
     // Si no hay stock, consideramos el producto agotado
@@ -20,11 +24,11 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     if (sinStock) {
         return (
             <div className="item-count">
-                <p className="sin-stock-mensaje" style={{ color: '#e74c3c', fontWeight: 'bold' }}>
+                <p className="sin-stock-mensaje">
                     Sin stock disponible
                 </p>
                 <div className="item-count__actions">
-                    <Link to="/" className='see--button'>
+                    <Link to="/" className='item-count__btn item-count__btn--secundario'>
                         Ver otros productos
                     </Link>
                 </div>
@@ -36,15 +40,15 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         <div className="item-count">
             {/* Contenedor Flex para la fila del selector */}
             <div className="item-count__controls">
-                <button className='operation' onClick={handleRestar} disabled={cantidad <= 1}>-</button>
+                <button className='operation' onClick={handleRestar} disabled={cantidad <= 1} aria-label="Restar una unidad">-</button>
                 <span className='counter-number'>{cantidad}</span>
-                <button className='operation' onClick={handleSumar} disabled={cantidad >= stock}>+</button>
+                <button className='operation' onClick={handleSumar} disabled={cantidad >= stock} aria-label="Sumar una unidad">+</button>
             </div>
 
             {/* Contenedor de acciones */}
             <div className="item-count__actions">
-                <button 
-                    className='buy--button' 
+                <button
+                    className='item-count__btn item-count__btn--principal'
                     onClick={() => {
                         toast.success(`¡Agregaste ${cantidad} producto(s) al carrito!`, {
                             position: "bottom-right",
@@ -54,10 +58,10 @@ const ItemCount = ({ stock, initial, onAdd }) => {
                         onAdd(cantidad);
                     }}
                 >
-                    Agregar al Carrito
+                    {Number.isFinite(precio) ? `Agregar — ${formatoPrecio(precio * cantidad)}` : "Agregar al Carrito"}
                 </button>
 
-                <Link to="/cart" className='see--button'>
+                <Link to="/carrito" className='item-count__btn item-count__btn--secundario'>
                     Ver Carrito
                 </Link>
             </div>

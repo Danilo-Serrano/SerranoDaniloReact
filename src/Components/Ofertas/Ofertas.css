@@ -1,5 +1,14 @@
 body{
-    background-color: var(--bg-dark);
+    background-color: #0F0F10; /* mismo fondo que la Navbar y las categorías */
+}
+/* Las fotos de FakeStoreAPI son recortes sobre fondo blanco: se muestran enteras, sin recortar */
+.ic-media--claro {
+    background: #F4F4F0;
+}
+.ic-media--claro .ic-img {
+    object-fit: contain;
+    padding: 24px;
+    box-sizing: border-box;
 }
 .line {
     border: none;

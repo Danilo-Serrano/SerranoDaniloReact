@@ -1,24 +1,19 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { CarritoContext } from '../Context/CarritoContext.jsx'; 
-import Formulario from '../Formulario/Formulario'; 
+import { CarritoContext } from '../Context/CarritoContext.jsx';
+import Formulario from '../Formulario/Formulario';
+import "../ItemListContainer/ItemListContainer.css";
 import "../Context/Carrito.css";
-import "../Ofertas/Ofertas.css";
 
 const Carrito = () => {
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
-    const { carrito, vaciarCarrito, eliminarProducto } = useContext(CarritoContext);
+    const { carrito, vaciarCarrito, eliminarProducto, cantidadTotal } = useContext(CarritoContext);
 
     // Cálculo del total
     const calcularTotal = carrito.reduce((acc, prod) => acc + prod.item.precio * prod.cantidad, 0);
 
     const handleRealizarCompra = () => {
         setMostrarFormulario(true);
-    };
-
-    const handleFormularioEnviado = () => {
-        setMostrarFormulario(false);
-        vaciarCarrito(); // <--- AHORA SÍ VACÍA EL CARRITO AL FINALIZAR
     };
 
     // Formateador de moneda
@@ -31,82 +26,78 @@ const Carrito = () => {
     };
 
     return (
-        <section className="carrito-section">
-            <div style={{ display: 'flex', marginLeft: 55  }}>
-            <h2 className='products-title'>Carrito de Compras</h2>
-            </div>
-            <div className='line'></div>
+        <section className="pg">
+            <header className="pg-encabezado">
+                <h2 className="pg-titulo">Carrito</h2>
+                {carrito.length > 0 && (
+                    <p className="pg-subtitulo">
+                        {carrito.length} {carrito.length === 1 ? "producto" : "productos"}
+                    </p>
+                )}
+            </header>
 
-            <div className='Carrito--Container'>
-                {carrito.length === 0 ? (
-                    <div className="carrito-vacio">
-                        <p className='p'>Tu carrito está vacío 🛒</p>
-                        <p className='p-sub'>¿No sabés qué comprar? ¡Mirá nuestros productos!</p>
-                        <Link to="/" className="see--button ver-productos-btn">
-                            Ver Productos
-                        </Link>
-                    </div>
-                ) : (
-                    <div className="product-card--Carrito">
-                        <div className="grid-header">
-                            <h3>Producto</h3>
-                            <h3>Cantidad</h3>
-                            <h3>Precio Un.</h3>
-                            <h3>Subtotal</h3>
-                            <h3>Acción</h3>
-                        </div>
-
+            {carrito.length === 0 ? (
+                <div className="cr-vacio">
+                    <p className="cr-vacio__titulo">Tu carrito está vacío</p>
+                    <p className="cr-vacio__texto">Todavía no agregaste productos.</p>
+                    <Link to="/" className="cr-btn cr-btn--principal">
+                        Ver productos
+                    </Link>
+                </div>
+            ) : (
+                <div className="cr-cuerpo">
+                    <ul className="cr-lista">
                         {carrito.map((prod) => (
-                            <div key={prod.item.id} className="producto-carrito">
-                                <div className="product--title">{prod.item.nombre}</div>
-                                <div className="product-quantity">
-                                    <span className="badge-cantidad">{prod.cantidad}</span>
+                            <li key={prod.item.id} className="cr-fila">
+                                <div className="cr-fila__info">
+                                    <p className="cr-nombre">{prod.item.nombre}</p>
+                                    <p className="cr-detalle">{prod.cantidad} × {formatoPrecio(prod.item.precio)}</p>
                                 </div>
-                                <div className="product-price">{formatoPrecio(prod.item.precio)}</div>
-                                <div className="product-total">{formatoPrecio(prod.item.precio * prod.cantidad)}</div>
-                                <div className="product-action">
-                                    <button 
-                                        className='eliminar-boton' 
-                                        onClick={() => eliminarProducto(prod.item.id)}
-                                        title="Eliminar producto"
-                                    >
-                                        ✕
-                                    </button>
-                                </div>
-                            </div>
+                                <p className="cr-subtotal">{formatoPrecio(prod.item.precio * prod.cantidad)}</p>
+                                <button
+                                    type="button"
+                                    className="cr-quitar"
+                                    onClick={() => eliminarProducto(prod.item.id)}
+                                    aria-label={`Quitar ${prod.item.nombre} del carrito`}
+                                >
+                                    Quitar
+                                </button>
+                            </li>
                         ))}
+                    </ul>
 
-                        <div className="total-container">
-                            <h3 className='total'>
-                                <span className='total'>Total de la compra:</span> 
-                                <strong>{formatoPrecio(calcularTotal)}</strong>
-                            </h3>
+                    <aside className="cr-resumen">
+                        <h3 className="cr-resumen__titulo">Resumen</h3>
+
+                        <div className="cr-resumen__fila">
+                            <span>Unidades</span>
+                            <span className="cr-mono">{cantidadTotal}</span>
+                        </div>
+                        <div className="cr-resumen__total">
+                            <span>Total</span>
+                            <strong className="cr-mono">{formatoPrecio(calcularTotal)}</strong>
                         </div>
 
                         {!mostrarFormulario && (
-                            <div className="acciones-carrito">
-                                <button className='see--button vaciar-btn' onClick={vaciarCarrito}>
-                                    Vaciar carrito
+                            <div className="cr-acciones">
+                                <button type="button" className="cr-btn cr-btn--principal realizar-compra-btn" onClick={handleRealizarCompra}>
+                                    Realizar compra — {formatoPrecio(calcularTotal)}
                                 </button>
-                                <button className='buy--button realizar-compra-btn' onClick={handleRealizarCompra}>
-                                    Realizar Compra
+                                <button type="button" className="cr-btn cr-btn--secundario vaciar-btn" onClick={vaciarCarrito}>
+                                    Vaciar carrito
                                 </button>
                             </div>
                         )}
-                    </div>
-                )}
+                    </aside>
+                </div>
+            )}
 
-                {mostrarFormulario && (
-                    <div className="formulario-wrapper">
-                        {/* SE PASAN LAS PROPS QUE REQUIERE EL FORMULARIO */}
-                        <Formulario 
-                            onSubmit={handleFormularioEnviado} 
-                            carrito={carrito} 
-                            total={calcularTotal} 
-                        />
-                    </div>
-                )}
-            </div>
+            {mostrarFormulario && (
+                <div className="formulario-wrapper">
+                    {/* El carrito se vacía al volver de Mercado Pago (ver ResultadoPago) */}
+                    <Formulario onCerrar={() => setMostrarFormulario(false)} />
+                </div>
+            )}
         </section>
     );
 };

@@ -1,0 +1,39 @@
+/* Tarjeta del QR — mismo estilo editorial que el formulario (Formulario.css) */
+.pago-qr {
+    align-items: center;
+    text-align: center;
+}
+
+.pago-qr .form--h2 {
+    padding-right: 0;
+    text-align: center;
+}
+
+/* El QR debe verse oscuro sobre fondo claro para que las apps lo escaneen bien */
+.pago-qr__codigo {
+    background: #ffffff;
+    padding: 4px;
+    line-height: 0;
+}
+
+.pago-qr__ayuda {
+    margin: 0;
+    color: #a1a1aa;
+    font-size: 0.8125rem;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.pago-qr__tiempo {
+    margin: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.875rem;
+    color: #ffffff;
+}
+
+.pago-qr__aviso {
+    margin: 0;
+    color: #D9383A;
+    font-size: 0.8125rem;
+    font-weight: 500;
+}

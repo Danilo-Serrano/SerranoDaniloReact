@@ -1,0 +1,377 @@
+/* ==========================================================================
+   Panel de administración — estilo editorial (guía de diseño: CLAUDE.md)
+   Superficies #141415 con borde #262629, botones planos y rectangulares,
+   un solo acento (rojo apagado #D9383A) reservado para lo destructivo y los errores.
+   ========================================================================== */
+.admin-panel,
+.admin-login {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 20px 64px;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.admin-login {
+    display: flex;
+    justify-content: center;
+    padding-top: 72px;
+}
+
+.admin-card {
+    box-sizing: border-box;
+    margin-bottom: 32px;
+    padding: 24px;
+    background: #141415;
+    border: 1px solid #262629;
+}
+
+.admin-login__form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 380px;
+    margin-bottom: 0;
+}
+
+/* Títulos: muy pesados, en mayúsculas */
+.admin-titulo {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.admin-login__form .admin-titulo {
+    margin-bottom: 8px;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+.admin-subtitulo {
+    margin: 0 0 20px;
+    font-size: 0.875rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+/* Barra superior: título y sesión a la izquierda, acciones a la derecha */
+.admin-barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #262629;
+}
+
+.admin-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.admin-encabezado .admin-subtitulo {
+    margin-bottom: 0;
+}
+
+.admin-barra__acciones {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Formulario de carga */
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 24px;
+    margin-bottom: 24px;
+}
+
+.admin-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.admin-campo--ancho {
+    grid-column: 1 / -1;
+}
+
+.admin-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #a1a1aa;
+}
+
+.admin-input {
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #262629;
+    border-radius: 0;
+    background: #0F0F10;
+    color: #ffffff;
+    font: inherit;
+    font-size: 0.9375rem;
+    transition: border-color 0.15s;
+}
+
+.admin-input::placeholder {
+    color: #52525b;
+}
+
+.admin-input option {
+    background: #141415;
+    color: #ffffff;
+}
+
+.admin-input:focus {
+    outline: none;
+    border-color: #ffffff;
+}
+
+.admin-input:disabled {
+    opacity: 0.55;
+}
+
+/* Valores numéricos de la tabla: monoespaciada, chicos */
+.admin-input--corto {
+    width: 104px;
+    padding: 8px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.8125rem;
+}
+
+/* Botones (y links con aspecto de botón) */
+.admin-boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: 40px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 0;
+    background: #ffffff;
+    color: #000000;
+    font: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.admin-boton:hover:not(:disabled) {
+    background: #e4e4e7;
+}
+
+.admin-boton:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.admin-boton--secundario {
+    border: 1px solid #3f3f46;
+    background: transparent;
+    color: #ffffff;
+}
+
+.admin-boton--secundario:hover:not(:disabled) {
+    background: #1A1A1C;
+    border-color: #52525b;
+}
+
+/* Acción destructiva: discreta hasta que se confirma */
+.admin-boton--peligro-suave {
+    border: 1px solid #3f3f46;
+    background: transparent;
+    color: #D9383A;
+}
+
+.admin-boton--peligro-suave:hover:not(:disabled) {
+    background: transparent;
+    border-color: #D9383A;
+}
+
+.admin-boton--peligro {
+    background: #D9383A;
+    color: #ffffff;
+}
+
+.admin-boton--peligro:hover:not(:disabled) {
+    background: #bf3032;
+}
+
+.admin-error {
+    font-size: 0.8125rem;
+    color: #D9383A;
+}
+
+.admin-nota {
+    display: block;
+    font-size: 0.75rem;
+    color: #a1a1aa;
+}
+
+.admin-estado {
+    padding: 32px 0;
+    text-align: center;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #a1a1aa;
+}
+
+/* Inventario: tabla mínima, separada por líneas finas */
+.admin-tabla-contenedor {
+    overflow-x: auto;
+}
+
+.admin-tabla {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-tabla th {
+    padding: 12px 12px 12px 0;
+    border-bottom: 1px solid #262629;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #71717a;
+}
+
+.admin-tabla td {
+    padding: 16px 12px 16px 0;
+    border-bottom: 1px solid #262629;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.admin-tabla tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-celda-nombre {
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.admin-celda-detalle {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #a1a1aa;
+}
+
+/* Foto vertical, como en el catálogo */
+.admin-miniatura {
+    display: block;
+    width: 48px;
+    height: 64px;
+    object-fit: cover;
+    background: #1A1A1C;
+}
+
+.admin-acciones {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.admin-acciones .admin-boton {
+    min-height: 36px;
+    padding: 6px 12px;
+}
+
+.admin-boton:focus-visible,
+.admin-input:focus-visible {
+    outline: 1px solid #F4F4F0;
+    outline-offset: 2px;
+}
+
+@media (max-width: 720px) {
+    .admin-panel,
+    .admin-login {
+        padding: 24px 16px 48px;
+    }
+
+    .admin-card {
+        padding: 16px;
+    }
+
+    .admin-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .admin-barra {
+        align-items: flex-start;
+    }
+
+    /* Cada producto pasa a ser un bloque apilado con sus etiquetas */
+    .admin-tabla thead {
+        display: none;
+    }
+
+    .admin-tabla tr {
+        display: block;
+        padding: 16px 0;
+        border-bottom: 1px solid #262629;
+    }
+
+    .admin-tabla tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    .admin-tabla td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 6px 0;
+        border-bottom: none;
+    }
+
+    /* Un producto sin foto no muestra una fila "Imagen" vacía */
+    .admin-tabla td:empty {
+        display: none;
+    }
+
+    .admin-tabla td::before {
+        content: attr(data-label);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #71717a;
+    }
+
+    .admin-acciones {
+        justify-content: flex-end;
+    }
+}

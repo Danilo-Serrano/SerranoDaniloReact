@@ -1,15 +1,66 @@
-.ItemListContainer{
-    background-color: var(--bg-dark);
+/* ==========================================================================
+   Encabezado de página y mensajes de estado — estilo editorial (CLAUDE.md)
+   Lo usan el catálogo, "Próximamente" y el detalle del producto.
+   Clases con prefijo "pg-" a propósito: .products-title y .line son globales
+   y las siguen usando el carrito y el resultado de pago.
+   ========================================================================== */
+.pg {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
 
+.pg-encabezado {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 20px 16px;
+  border-bottom: 1px solid #262629;
 }
-.ofertas--container2{
-    margin-top: 20px;
-    color: var(--accent-cyan);
+
+/* Título: muy pesado. Subtítulo: muy fino (mezcla de pesos de la guía) */
+.pg-titulo {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  /* Al saltar a #sin-stock la barra fija no debe tapar el título */
+  scroll-margin-top: 90px;
 }
-.line {
-  background-color: rgba(255, 255, 255, 0.1); /* Gris claro traslúcido */
-  height: 1px;
-  width: 100%;
-  margin: 25px 0; /* Espaciado arriba y abajo para separar secciones */
-  border: none;
+
+.pg-subtitulo {
+  margin: 4px 0 0;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+/* Cargando / vacío / error */
+.pg-estado {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 20px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+@media (max-width: 540px) {
+  .pg-encabezado {
+    padding: 32px 16px 12px;
+  }
+
+  .pg-titulo {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .pg-estado {
+    padding: 32px 16px;
+  }
 }
