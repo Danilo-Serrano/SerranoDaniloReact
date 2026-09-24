@@ -1,6 +1,6 @@
-# MendoShop
+# GamerZone
 
-Tienda online de indumentaria y calzado deportivo de cuatro marcas: Nike, Adidas, Umbro y New Balance. Hecha con React y Vite. Catálogo por marca, sección "Próximamente", carrito persistente, checkout con Mercado Pago (Checkout Pro y QR dinámico) y panel de administración con Firebase Auth + Firestore.
+Tienda online de tecnología (celulares, laptops, consolas, TVs y accesorios) hecha con React y Vite. Catálogo por categorías, carrito persistente, checkout con Mercado Pago (Checkout Pro y QR dinámico) y panel de administración con Firebase Auth + Firestore.
 
 ---
 
@@ -10,19 +10,7 @@ Tienda online de indumentaria y calzado deportivo de cuatro marcas: Nike, Adidas
 - **Datos y Auth:** Firebase 11 (Firestore, Authentication)
 - **Pagos:** Mercado Pago (`@mercadopago/sdk-react`) — Checkout Pro y QR dinámico
 - **Backend de pagos:** Cloud Functions (`firebase-functions` 7, SDK `mercadopago` 3, Node 24) en `functions/`
-- **API externa:** [FakeStoreAPI](https://fakestoreapi.com) para la sección "Próximamente" (ropa de hombre y mujer)
 - **Otros:** react-toastify, qrcode.react, Font Awesome, lucide-react
-
----
-
-## Funcionalidades
-
-- **Catálogo por marca:** Nike, Adidas, Umbro y New Balance (`/categoria/:idCategoria`).
-- **Detalle de producto:** foto, marca, precio en ARS, descripción y selector de cantidad según stock.
-- **Carrito:** agregar, modificar cantidades y vaciar. Se guarda en `localStorage`.
-- **Checkout:** formulario de datos del cliente y pago con Mercado Pago, por botón o QR.
-- **Próximamente:** productos traídos de FakeStoreAPI, precios en USD.
-- **Panel de administración** (`/admin`): login con Firebase Auth, alta de productos y edición de precio y stock.
 
 ---
 
@@ -57,36 +45,20 @@ UI de emuladores: `http://127.0.0.1:4000` · Auth `9099` · Firestore `8080` · 
 
 ---
 
-## Modelo de producto (Firestore, colección `productos`)
-
-| Campo         | Tipo   | Notas                                       |
-| ------------- | ------ | ------------------------------------------- |
-| `nombre`      | string | Obligatorio                                 |
-| `precio`      | number | ARS, mayor a 0                              |
-| `stock`       | number | Entero, 0 o mayor                           |
-| `categoria`   | string | `nike` · `adidas` · `umbro` · `new-balance` |
-| `descripcion` | string | Obligatorio                                 |
-| `imagen`      | string | URL de la foto                              |
-
-Las marcas válidas están definidas en `CATEGORIAS` (`src/Components/services/productos.js`).
-
----
-
 ## Estructura del proyecto
 
 ```
 src/
   Components/
     Admin/                 Login, AuthContext, RutaProtegida, panel, tabla y formulario de productos
-    Banner/ Marquee/       Portada y cinta de mensajes de la home
+    Banner/ Marquee/       Piezas visuales de la home
     CartWidget/            Ícono del carrito con contador
-    Categorias/            Navegación por marca
-    Ofertas/               Sección "Próximamente" (FakeStoreAPI)
+    Categorias/ Ofertas/   Navegación y ofertas del catálogo
     Context/               CarritoContext + vista de carrito
     Formulario/            Checkout (datos del cliente, botón MP)
     Home/                  Home
     Item/                  Tarjeta de producto y selector de cantidad (ItemCount)
-    ItemList/ ItemListContainer/       Listado de productos (general y por marca)
+    ItemList/ ItemListContainer/       Listado de productos (general y por categoría)
     ItemDetail/ ItemDetailContainer/   Detalle de producto por :id
     NavBar/ Footer/        Layout general
     PagoQR/                Flujo de pago con QR dinámico
@@ -94,9 +66,10 @@ src/
     Productos/             Vista de productos
     services/
       config.js            Inicialización de Firebase (y emuladores opcionales)
-      productos.js         CRUD y validación de productos en Firestore
+      productos.js         Acceso a Firestore
       mercadopago.js       Llamadas a las Cloud Functions de pago
       carritoStorage.js    Persistencia del carrito en localStorage
+  asyncMock.js             Datos mock de productos
   App.jsx                  Rutas de la app
   main.jsx                 Punto de entrada
 
@@ -109,17 +82,17 @@ functions/
 
 ## Rutas
 
-| Ruta                                                   | Descripción                              |
-| ------------------------------------------------------ | ---------------------------------------- |
-| `/`                                                    | Home: portada, catálogo y "Próximamente" |
-| `/categoria/nike` · `adidas` · `umbro` · `new-balance` | Catálogo filtrado por marca              |
-| `/item/:id`                                            | Detalle de producto                      |
-| `/carrito`                                             | Carrito                                  |
-| `/checkout`                                            | Datos del cliente y pago                 |
-| `/pago/exito` · `/pago/pendiente` · `/pago/error`      | Resultado del pago (`back_urls` de MP)   |
-| `/admin/login`                                         | Login de administración                  |
-| `/admin`                                               | Panel de administración (ruta protegida) |
-| `*`                                                    | 404                                      |
+| Ruta                                          | Descripción                                |
+| --------------------------------------------- | ------------------------------------------ |
+| `/`                                           | Home con listado de productos              |
+| `/categoria/:idCategoria`                     | Listado filtrado por categoría             |
+| `/item/:id`                                   | Detalle de producto                        |
+| `/carrito`                                    | Carrito de compras                         |
+| `/checkout`                                   | Formulario de datos y pago                 |
+| `/pago/exito` · `/pago/pendiente` · `/pago/error` | Resultado del pago (`back_urls` de MP) |
+| `/admin/login`                                | Login de administración                    |
+| `/admin`                                      | Panel de administración (ruta protegida)   |
+| `*`                                           | 404                                        |
 
 ---
 
