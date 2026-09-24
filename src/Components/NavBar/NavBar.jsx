@@ -45,7 +45,7 @@ const NavBar = () => {
                     <li><FontAwesomeIcon icon={faWhatsapp} /></li>
                 </ul>
                 <div className="nb-strip__right">
-                    <span className="nb-strip__domain">GAMERZONE.COM.AR</span>
+                    <span className="nb-strip__domain">MENDOSHOP.COM.AR</span>
                     <Link to="/admin" className="admin-link" title="Administración" aria-label="Administración">
                         <Settings size={14} strokeWidth={1.5} aria-hidden="true" />
                     </Link>
